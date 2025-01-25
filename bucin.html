@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gombalan Cinta</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #bdc3c7);
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        input, button {
+            padding: 15px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            border-radius: 30px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input {
+            width: 80%;
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .output {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            animation: fadeIn 1.5s ease-in-out;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>Selamat Datang</h1>
+        <p>Masukkan nama kamu di sini</p>
+        <div id="inputContainer">
+            <input type="text" id="nameInput" placeholder="Masukkan nama">
+            <button onclick="generateGombal(); playRandomSound();">Enter</button>
+        </div>
+    </div>
+    <div class="output" id="output"></div>
+
+    <script>
+        const sounds = [
+            "https://files.catbox.moe/6e18le.mp3",
+            "https://files.catbox.moe/ro3a1e.mp3",
+            "https://f.uguu.se/ZKeJLtnk.mp3",
+            "https://f.uguu.se/EaNSbRYg.mp3",
+             "https://d.uguu.se/nKoEDrJK.mp3"
+        ];
+        function playRandomSound() {
+            const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+            const audio = new Audio(randomSound);
+            audio.play();
+        }
+
+        function generateGombal() {
+            const nameInput = document.getElementById("nameInput");
+            const content = document.getElementById("content");
+            const output = document.getElementById("output");
+            const name = nameInput.value.trim();
+
+            const gombalan = [
+                `Hal yang paling aku suka yaitu ngemil. Tapi tau gak, ${name}? Ngemil apa yang paling aku suka? Ngemilikin kamu sepenuhnya.`,
+                `Seandainya sekarang adalah tanggal 28 Oktober 1928, aku akan ubah naskah sumpah pemuda menjadi sumpah aku cinta ${name}.`,
+                `Aku gak pernah merasakan ketakutan sedikit pun ketika berada di dekat kamu ${name}, karena kamulah kekuatanku.`,
+                `Hai ${name}, kamu tau gak apa persamaan rasa sayangku ke kamu dengan matahari? Sama-sama terbit setiap hari dan hanya akan berakhir sampai kiamat.`,
+                `Kalau bus kota jauh dekat ongkosnya sama, tapi cinta aku ke ${name}, makin dekat makin saling cinta.`,
+                `Anjing menggonggong kafilah berlalu, tiap hari bengong mikirin ${name} melulu.`,
+                `Kalau aku jadi wakil rakyat, kayaknya bakalan gagal deh. Gimana aku mau mikirin rakyat kalau yang ada di pikiranku itu cuma ada ${name}.`,
+                `Satu tambah satu sama dengan dua. Aku sama kamu ${name}, sama dengan saling cinta.`,
+                `Kalo kita beda kartu GSM, itu gak masalah, asalkan nantinya nama kita berdua ada di kartu keluarga yang sama.`,
+                `${name}, aku gak butuh week end, yang aku butuhkan hanyalah love you till the end.`,
+                `Aku mohon jangan jalan-jalan terus di pikiranku ${name}. Mending kamu duduk manis di hatiku aja.`,
+                `Napas aku kok sesek banget ya, ${name}? Karena separuh nafasku ada di kamu.`,
+                `${name}, cinta aku ke kamu tuh bagaikan hutang. Awalnya kecil, lama-lama didiemin malah tambah gede.`,
+                `Tau gak kenapa malam ini gak ada bintang? Soalnya bintangnya pindah semua ke matamu ${name}.`
+            ];
+
+            if (name) {
+                const randomIndex = Math.floor(Math.random() * gombalan.length);
+                content.style.display = "none";
+                output.style.display = "block";
+                output.innerText = gombalan[randomIndex];
+            } else {
+                alert("Masukkan nama dulu dong!");
+            }
+        }
+    </script>
+</body>
+</html>
